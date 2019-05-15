@@ -6,12 +6,23 @@
 #include <iostream>
 #include <rlutil.h>
 
+namespace fakecompile
+{
+    enum time
+    {
+        MISSING = -1,
+        INFINITELY = -2,
+        QUICKLY = -3
+    };
+} // fakecompile
+
 class tpl
 {
-protected:
+private:
     std::string name;
     std::vector<std::string> extension;
 
+protected:
     virtual void head();
     virtual void body();
     virtual void tail();
