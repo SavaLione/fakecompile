@@ -39,7 +39,9 @@ void make::body()
 
 void make::tail()
 {
-
+    rlutil::setColor(rlutil::GREY);
+    std::cout << "[100%] Built target " << path()[rand_from_vec(path())] << std::endl;
+    default_color();
 }
 
 void make::default_color()
