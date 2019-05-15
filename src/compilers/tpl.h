@@ -8,9 +8,6 @@
 
 class tpl
 {
-private:
-    void function_not_set();
-
 protected:
     std::string name;
     std::vector<std::string> extension;
@@ -38,44 +35,38 @@ tpl::~tpl()
 {
 }
 
-void tpl::function_not_set()
-{
-    std::cout << __PRETTY_FUNCTION__;
-}
-
 void tpl::head()
 {
     rlutil::setColor(rlutil::RED);
-    function_not_set();
-    std::cout << "Please set: " << "void head();" << std::endl;
+    std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     default_color();
 }
 
 void tpl::body()
 {
     rlutil::setColor(rlutil::RED);
-    std::cout << "Please set: " << "void body();" << std::endl;
+    std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     default_color();
 }
 
 void tpl::tail()
 {
     rlutil::setColor(rlutil::RED);
-    std::cout << "Please set: " << "void tail();" << std::endl;
+    std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     default_color();
 }
 
 void tpl::default_color()
 {
     rlutil::setColor(rlutil::RED);
-    std::cout << "Please set: " << "void defaultColor();" << std::endl;
+    std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     rlutil::setColor(rlutil::GREY);
 }
 
 void tpl::run()
 {
     rlutil::setColor(rlutil::RED);
-    std::cout << "Please set: " << "void run();" << std::endl;
+    std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     default_color();
 }
 
