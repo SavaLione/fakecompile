@@ -10,6 +10,7 @@ private:
     void body() override;
     void tail() override;
     void default_color() override;
+    std::vector<std::string> fake_extension_list() override;
 
 public:
     make() : tpl("make")
@@ -104,6 +105,14 @@ void make::run()
     head();
     body();
     tail();
+}
+
+std::vector<std::string> make::fake_extension_list()
+{
+    return
+        {
+            "cpp.obj"
+        };
 }
 
 #endif // MAKE_H
