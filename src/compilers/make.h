@@ -27,7 +27,9 @@ make::~make()
 
 void make::head()
 {
-
+    rlutil::setColor(rlutil::MAGENTA);
+    std::cout << "Scanning dependencies of target " << path()[rand_from_vec(path())] << std::endl;
+    default_color();
 }
 
 void make::body()
@@ -42,7 +44,7 @@ void make::tail()
 
 void make::default_color()
 {
-
+    rlutil::setColor(rlutil::GREY);
 }
 
 void make::run()

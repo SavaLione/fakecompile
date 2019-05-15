@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <random>
 #include <rlutil.h>
 
 #include "../fakecompile.h"
@@ -24,6 +26,8 @@ private:
     std::string name;
     std::vector<std::string> extension = {"ADD_EXTENSION"};
 
+    std::mt19937 mt;
+
 protected:
     virtual std::vector<std::string> path();
     virtual std::vector<std::string> source_file_name();
@@ -34,6 +38,8 @@ protected:
 
     virtual void default_color();
 
+    int rand_from_vec(std::vector<std::string> const& vec);
+
 public:
     tpl(std::string const &name, std::vector<std::string> const &extension);
     ~tpl();
@@ -43,6 +49,8 @@ public:
 
 tpl::tpl(std::string const &name, std::vector<std::string> const &extension)
 {
+    std::mt19937 mt(time(0));
+    this->mt = mt;
     this->name = name;
     this->extension = extension;
 }
@@ -122,6 +130,12 @@ std::vector<std::string> tpl::source_file_name()
             "swab",
             "unistd"
         };
+}
+
+int tpl::rand_from_vec(std::vector<std::string> const& vec)
+{
+    std::uniform_int_distribution<> distr(0, vec.size() - 1);
+    return distr(mt);
 }
 
 #endif // TPL_H
