@@ -40,6 +40,9 @@ protected:
     int rand_from_vec(std::vector<std::string> const& vec);
     int rand_time_sleep();
     int rand_quantity_source_files();
+    int rand_range(int const& a, int const& b);
+
+    bool rand_shift(int const& value);
 
     virtual std::vector<std::string> fake_path();
     virtual std::string fake_source_file_name();
@@ -168,7 +171,7 @@ std::vector<std::string> tpl::fake_path()
     std::vector<std::string> ret;
 
     std::uniform_int_distribution<> distr(1, 10);
-    int depth = depth = distr(mt);
+    int depth = distr(mt);
 
     for(int i = 0; i < depth; i++)
     {
@@ -186,6 +189,21 @@ std::string tpl::fake_source_file_name()
 std::string tpl::fake_extension()
 {
     return fake_extension_list()[rand_from_vec(fake_extension_list())];
+}
+
+int tpl::rand_range(int const& a, int const& b)
+{
+    std::uniform_int_distribution<> distr(a, b);
+    return distr(mt);
+}
+
+bool tpl::rand_shift(int const& value)
+{
+    std::uniform_int_distribution<> distr(0, value);
+    if (value != distr(mt))
+        return false;
+    else
+        return true;
 }
 
 #endif // TPL_H
