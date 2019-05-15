@@ -16,9 +16,6 @@ int main()
 
     tpl some(name, extension);
 
-    some.head();
-    some.body();
-    some.tail();
     some.run();
 
     return 0;

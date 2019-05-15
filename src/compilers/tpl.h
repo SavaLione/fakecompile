@@ -12,15 +12,15 @@ protected:
     std::string name;
     std::vector<std::string> extension;
 
-public:
-    tpl(std::string const &name, std::vector<std::string> const &extension);
-    ~tpl();
-
     virtual void head();
     virtual void body();
     virtual void tail();
 
     virtual void default_color();
+
+public:
+    tpl(std::string const &name, std::vector<std::string> const &extension);
+    ~tpl();
 
     virtual void run();
 };
@@ -68,6 +68,10 @@ void tpl::run()
     rlutil::setColor(rlutil::RED);
     std::cout << "Please set: " << __PRETTY_FUNCTION__ << std::endl;
     default_color();
+
+    head();
+    body();
+    tail();
 }
 
 #endif // TPL_H
