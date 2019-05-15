@@ -24,13 +24,12 @@ class tpl
 {
 private:
     std::string name;
-    std::vector<std::string> extension = {"ADD_EXTENSION"};
-
     std::mt19937 mt;
 
 protected:
     virtual std::vector<std::string> path();
     virtual std::vector<std::string> source_file_name();
+    virtual std::vector<std::string> fake_extension_list();
 
     virtual void head();
     virtual void body();
@@ -40,23 +39,25 @@ protected:
 
     int rand_from_vec(std::vector<std::string> const& vec);
     int rand_time_sleep();
+    int rand_quantity_source_files();
 
     virtual std::vector<std::string> fake_path();
     virtual std::string fake_source_file_name();
+    virtual std::string fake_extension();
+
 
 public:
-    tpl(std::string const &name, std::vector<std::string> const &extension);
+    tpl(std::string const &name);
     ~tpl();
 
     virtual void run();
 };
 
-tpl::tpl(std::string const &name, std::vector<std::string> const &extension)
+tpl::tpl(std::string const &name)
 {
     std::mt19937 mt(time(0));
     this->mt = mt;
     this->name = name;
-    this->extension = extension;
 }
 
 tpl::~tpl()
@@ -136,6 +137,14 @@ std::vector<std::string> tpl::source_file_name()
         };
 }
 
+std::vector<std::string> tpl::fake_extension_list()
+{
+    return
+        {
+            "SET_FAKE_EXTENSION_LIST"
+        };
+}
+
 int tpl::rand_from_vec(std::vector<std::string> const& vec)
 {
     std::uniform_int_distribution<> distr(0, vec.size() - 1);
@@ -145,6 +154,12 @@ int tpl::rand_from_vec(std::vector<std::string> const& vec)
 int tpl::rand_time_sleep()
 {
     std::uniform_int_distribution<> distr(0, 2 * 1000);
+    return distr(mt);
+}
+
+int tpl::rand_quantity_source_files()
+{
+    std::uniform_int_distribution<> distr(1, 10);
     return distr(mt);
 }
 
@@ -166,6 +181,11 @@ std::vector<std::string> tpl::fake_path()
 std::string tpl::fake_source_file_name()
 {
     return source_file_name()[rand_from_vec(source_file_name())];
+}
+
+std::string tpl::fake_extension()
+{
+    return fake_extension_list()[rand_from_vec(fake_extension_list())];
 }
 
 #endif // TPL_H

@@ -7,7 +7,7 @@ namespace VERSION
 {
     const int MAJOR = 0;
     const int MINOR = 0;
-    const int PATCH = 14;
+    const int PATCH = 15;
 
     const int VERSION = (MAJOR * 10000 + MINOR * 100 + PATCH);
 
