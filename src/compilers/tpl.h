@@ -12,13 +12,13 @@
 
 namespace fakecompile
 {
-    enum time
-    {
-        MISSING = -1,
-        INFINITELY = -2,
-        QUICKLY = -3
-    };
-} // fakecompile
+enum time
+{
+    MISSING = -1,
+    INFINITELY = -2,
+    QUICKLY = -3
+};
+} // namespace fakecompile
 
 class tpl
 {
@@ -37,17 +37,20 @@ protected:
 
     virtual void default_color();
 
-    int rand_from_vec(std::vector<std::string> const& vec);
+    int rand_from_vec(std::vector<std::string> const &vec);
     int rand_time_sleep();
     int rand_quantity_source_files();
-    int rand_range(int const& a, int const& b);
+    int rand_range(int const &a, int const &b);
 
-    bool rand_shift(int const& value);
+    bool rand_shift(int const &value);
 
     virtual std::vector<std::string> fake_path();
     virtual std::string fake_source_file_name();
     virtual std::string fake_extension();
 
+    int quantity_source_files_MAX = 10;
+    int fake_path_depth_MAX = 10;
+    int time_sleep_MAX = 2 * 1000;
 
 public:
     tpl(std::string const &name);
@@ -108,47 +111,41 @@ void tpl::run()
 
 std::vector<std::string> tpl::path()
 {
-    return 
-        {
-            "kernel",
-            "syscalls",
-            "lib",
-            "math-emu",
-            "mm",
-            "src",
-            "oprofile",
-            "arc",
-            "boot",
-            "dts"
-        };
+    return {
+        "kernel",
+        "syscalls",
+        "lib",
+        "math-emu",
+        "mm",
+        "src",
+        "oprofile",
+        "arc",
+        "boot",
+        "dts"};
 }
 
 std::vector<std::string> tpl::source_file_name()
 {
-    return
-        {
-            "byteorder",
-            "cachectl",
-            "elf",
-            "page",
-            "ptrace",
-            "setup",
-            "sigcontext",
-            "signal",
-            "swab",
-            "unistd"
-        };
+    return {
+        "byteorder",
+        "cachectl",
+        "elf",
+        "page",
+        "ptrace",
+        "setup",
+        "sigcontext",
+        "signal",
+        "swab",
+        "unistd"};
 }
 
 std::vector<std::string> tpl::fake_extension_list()
 {
-    return
-        {
-            "SET_FAKE_EXTENSION_LIST"
-        };
+    return {
+        "SET_FAKE_EXTENSION_LIST"};
 }
 
-int tpl::rand_from_vec(std::vector<std::string> const& vec)
+int tpl::rand_from_vec(std::vector<std::string> const &vec)
 {
     std::uniform_int_distribution<> distr(0, vec.size() - 1);
     return distr(mt);
@@ -156,24 +153,31 @@ int tpl::rand_from_vec(std::vector<std::string> const& vec)
 
 int tpl::rand_time_sleep()
 {
-    std::uniform_int_distribution<> distr(0, 2 * 1000);
+    std::uniform_int_distribution<> distr(0, time_sleep_MAX);
     return distr(mt);
 }
 
 int tpl::rand_quantity_source_files()
 {
-    std::uniform_int_distribution<> distr(1, 10);
-    return distr(mt);
+    if (quantity_source_files_MAX != 1)
+    {
+        std::uniform_int_distribution<> distr(1, quantity_source_files_MAX);
+        return distr(mt);
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 std::vector<std::string> tpl::fake_path()
 {
     std::vector<std::string> ret;
 
-    std::uniform_int_distribution<> distr(1, 10);
+    std::uniform_int_distribution<> distr(1, fake_path_depth_MAX);
     int depth = distr(mt);
 
-    for(int i = 0; i < depth; i++)
+    for (int i = 0; i < depth; i++)
     {
         ret.push_back(path()[rand_from_vec(path())]);
     }
@@ -191,13 +195,13 @@ std::string tpl::fake_extension()
     return fake_extension_list()[rand_from_vec(fake_extension_list())];
 }
 
-int tpl::rand_range(int const& a, int const& b)
+int tpl::rand_range(int const &a, int const &b)
 {
     std::uniform_int_distribution<> distr(a, b);
     return distr(mt);
 }
 
-bool tpl::rand_shift(int const& value)
+bool tpl::rand_shift(int const &value)
 {
     std::uniform_int_distribution<> distr(0, value);
     if (value != distr(mt))
