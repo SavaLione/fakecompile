@@ -36,6 +36,9 @@ void make::body()
 {
     int percent = 0;
     bool fl = true;
+
+    std::cout << std::endl;
+
     while (fl)
     {
         std::vector<std::string> fp = fake_path();
@@ -45,6 +48,14 @@ void make::body()
             for (int i = 0; i < rand_quantity_source_files(); i++)
             {
                 rlutil::msleep(rand_time_sleep());
+
+                if (percent < 90)
+                {
+                    if (rand_shift(7))
+                    {
+                        percent++;
+                    }
+                }
 
                 std::cout << "[";
 
