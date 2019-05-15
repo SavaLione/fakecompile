@@ -1,34 +1,25 @@
 #include "fakecompile.h"
-
-#include <rlutil.h>
+#include "compilers/tpl.h"
 
 #include <iostream>
 #include <string>
-
-using namespace std;
-
-void colorTest();
+#include <vector>
 
 int main()
 {
-    cout << "fakecompile" << endl;
+    std::string name = "some";
 
-    colorTest();
+    std::vector<std::string> extension;
+    extension.push_back("o");
+    extension.push_back("cpp");
+    extension.push_back("h");
+
+    tpl some(name, extension);
+
+    some.head();
+    some.body();
+    some.tail();
+    some.run();
 
     return 0;
-}
-
-void colorTest()
-{
-    for(int i = 0; i < 16; i++)
-    {
-        rlutil::setColor(i);
-        cout << "color: [" << i << "]" << endl;
-    }
-
-    rlutil::setColor(rlutil::WHITE);
-    cout << "color: [WHITE]" << endl;
-
-    rlutil::setColor(rlutil::GREY);
-    cout << "color: [GREY]" << endl;
 }

@@ -95,11 +95,10 @@ project(${FC_NAME})
 
 set(FC_HEADERS
     src/fakecompile.h
-    src/Color.h)
+    src/compilers/tpl.h)
 
 set(FC_SOURCES
-    src/fakecompile.cpp
-    src/Color.cpp)
+    src/fakecompile.cpp)
 
 ################################
 # Executable
