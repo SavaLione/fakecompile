@@ -6,6 +6,8 @@
 #include <iostream>
 #include <rlutil.h>
 
+#include "../fakecompile.h"
+
 namespace fakecompile
 {
     enum time

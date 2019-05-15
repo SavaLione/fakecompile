@@ -1,5 +1,4 @@
-#include "fakecompile.h"
-#include "compilers/tpl.h"
+#include "compilers/make.h"
 
 #include <iostream>
 #include <string>
@@ -14,9 +13,8 @@ int main()
     extension.push_back("cpp");
     extension.push_back("h");
 
-    tpl some(name, extension);
-
-    some.run();
+    make mk(name, extension);
+    mk.run();
 
     return 0;
 }
