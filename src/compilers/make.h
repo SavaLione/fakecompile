@@ -84,35 +84,55 @@ void make::body()
 
         if (percent < 10)
         {
-            if (rand_shift(1023)) percent = rand_range(0, 10);
-        } else if ((percent > 9) && (percent < 20))
+            if (rand_shift(1023))
+                percent = rand_range(0, 10);
+        }
+        else if ((percent > 9) && (percent < 20))
         {
-            if (rand_shift(511)) percent = rand_range(0, 20);
-        } else if ((percent > 19) && (percent < 30))
+            if (rand_shift(511))
+                percent = rand_range(0, 20);
+        }
+        else if ((percent > 19) && (percent < 30))
         {
-            if (rand_shift(255)) percent = rand_range(0, 30);
-        } else if ((percent > 29) && (percent < 40))
+            if (rand_shift(255))
+                percent = rand_range(0, 30);
+        }
+        else if ((percent > 29) && (percent < 40))
         {
-            if (rand_shift(127)) percent = rand_range(0, 40);
-        } else if ((percent > 39) && (percent < 50))
+            if (rand_shift(127))
+                percent = rand_range(0, 40);
+        }
+        else if ((percent > 39) && (percent < 50))
         {
-            if (rand_shift(63)) percent = rand_range(20, 50);
-        } else if ((percent > 49) && (percent < 60))
+            if (rand_shift(63))
+                percent = rand_range(20, 50);
+        }
+        else if ((percent > 49) && (percent < 60))
         {
-            if (rand_shift(31)) percent = rand_range(30, 60);
-        } else if ((percent > 59) && (percent < 70))
+            if (rand_shift(31))
+                percent = rand_range(30, 60);
+        }
+        else if ((percent > 59) && (percent < 70))
         {
-            if (rand_shift(15)) percent = rand_range(40, 70);
-        } else if ((percent > 69) && (percent < 80))
+            if (rand_shift(15))
+                percent = rand_range(40, 70);
+        }
+        else if ((percent > 69) && (percent < 80))
         {
-            if (rand_shift(7)) percent = rand_range(50, 80);
-        } else if ((percent > 79) && (percent < 90))
+            if (rand_shift(7))
+                percent = rand_range(50, 80);
+        }
+        else if ((percent > 79) && (percent < 90))
         {
-            if (rand_shift(3)) percent = rand_range(60, 80);
-        } else if ((percent > 89) && (percent < 100))
+            if (rand_shift(3))
+                percent = rand_range(60, 80);
+        }
+        else if ((percent > 89) && (percent < 100))
         {
-            if (rand_shift(1)) percent = rand_range(60, 80);
-        } else
+            if (rand_shift(1))
+                percent = rand_range(60, 80);
+        }
+        else
         {
             percent = rand_range(0, 99);
         }
@@ -140,10 +160,8 @@ void make::run()
 
 std::vector<std::string> make::fake_extension_list()
 {
-    return
-        {
-            "cpp.obj"
-        };
+    return {
+        "cpp.obj"};
 }
 
 #endif // MAKE_H
