@@ -6,7 +6,6 @@
 
 int main()
 {
-
     make mk;
     mk.run();
 

@@ -34,7 +34,42 @@ void make::head()
 
 void make::body()
 {
+    int percent = 0;
+    bool fl = true;
+    while(fl)
+    {
+        std::vector<std::string> fp = fake_path();
+        int depth = fp.size() - 1;
 
+        rlutil::msleep(rand_time_sleep());
+
+        std::cout << "[";
+
+        if(percent < 10)
+        {
+            std::cout << "  " << percent << "%] ";
+        }
+        else if((percent > 9) && (percent < 100))
+        {
+            std::cout << " " << percent << "%] ";
+        }
+        else
+        {
+            std::cout << percent << "%] ";
+        }
+
+        rlutil::setColor(rlutil::GREEN);
+
+        std::cout << "Building CXX object ";
+
+
+
+        percent++;
+        if (percent >= 100)
+        {
+            fl = false;
+        }
+    }
 }
 
 void make::tail()

@@ -39,6 +39,10 @@ protected:
     virtual void default_color();
 
     int rand_from_vec(std::vector<std::string> const& vec);
+    int rand_time_sleep();
+
+    virtual std::vector<std::string> fake_path();
+    virtual std::string fake_source_file_name();
 
 public:
     tpl(std::string const &name, std::vector<std::string> const &extension);
@@ -136,6 +140,32 @@ int tpl::rand_from_vec(std::vector<std::string> const& vec)
 {
     std::uniform_int_distribution<> distr(0, vec.size() - 1);
     return distr(mt);
+}
+
+int tpl::rand_time_sleep()
+{
+    std::uniform_int_distribution<> distr(0, 2 * 1000);
+    return distr(mt);
+}
+
+std::vector<std::string> tpl::fake_path()
+{
+    std::vector<std::string> ret;
+
+    std::uniform_int_distribution<> distr(1, 10);
+    int depth = depth = distr(mt);
+
+    for(int i = 0; i < depth; i++)
+    {
+        ret.push_back(path()[rand_from_vec(path())]);
+    }
+
+    return ret;
+}
+
+std::string tpl::fake_source_file_name()
+{
+    return source_file_name()[rand_from_vec(source_file_name())];
 }
 
 #endif // TPL_H
