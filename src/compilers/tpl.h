@@ -22,9 +22,12 @@ class tpl
 {
 private:
     std::string name;
-    std::vector<std::string> extension;
+    std::vector<std::string> extension = {"ADD_EXTENSION"};
 
 protected:
+    virtual std::vector<std::string> path();
+    virtual std::vector<std::string> source_file_name();
+
     virtual void head();
     virtual void body();
     virtual void tail();
@@ -85,6 +88,40 @@ void tpl::run()
     head();
     body();
     tail();
+}
+
+std::vector<std::string> tpl::path()
+{
+    return 
+        {
+            "kernel",
+            "syscalls",
+            "lib",
+            "math-emu",
+            "mm",
+            "src",
+            "oprofile",
+            "arc",
+            "boot",
+            "dts"
+        };
+}
+
+std::vector<std::string> tpl::source_file_name()
+{
+    return
+        {
+            "byteorder",
+            "cachectl",
+            "elf",
+            "page",
+            "ptrace",
+            "setup",
+            "sigcontext",
+            "signal",
+            "swab",
+            "unistd"
+        };
 }
 
 #endif // TPL_H
