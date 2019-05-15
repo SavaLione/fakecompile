@@ -13,7 +13,7 @@ int main()
     extension.push_back("cpp");
     extension.push_back("h");
 
-    make mk(name, extension);
+    make mk(extension);
     mk.run();
 
     return 0;

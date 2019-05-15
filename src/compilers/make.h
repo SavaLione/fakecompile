@@ -12,7 +12,7 @@ private:
     void default_color() override;
 
 public:
-    make(std::string const &name, std::vector<std::string> const &extension) : tpl(name, extension)
+    make(std::vector<std::string> const &extension) : tpl("make", extension)
     {
 
     }
