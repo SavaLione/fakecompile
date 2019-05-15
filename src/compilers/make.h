@@ -76,7 +76,7 @@ void make::body()
 
                 std::cout << "Building CXX object ";
 
-                for (int z = depth; z >= 0; z--)
+                for (int z = 0; z <= depth; z++)
                 {
                     std::cout << fp[z] << "/";
                 }
