@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <ctime>
+#include <chrono>
 #include <random>
 #include <rlutil.h>
 
@@ -27,6 +28,7 @@ private:
 
 protected:
     std::mt19937 mt;
+    std::chrono::steady_clock sc;
 
     virtual std::vector<std::string> path();
     virtual std::vector<std::string> source_file_name();

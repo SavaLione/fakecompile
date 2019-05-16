@@ -8,7 +8,7 @@ int main()
 {
     make mk;
     mk.set_time_sleep_MAX(300);
-    mk.run();
+    mk.run(10);
 
     return 0;
 }
