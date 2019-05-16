@@ -20,6 +20,7 @@ public:
     ~make();
 
     void run() override;
+    void run(fakecompile::time t_body);
 };
 
 make::~make()
@@ -167,6 +168,27 @@ void make::run()
 {
     head();
     body();
+    tail();
+}
+void make::run(fakecompile::time t_body)
+{
+    head();
+    if (t_body == fakecompile::time::INFINITELY)
+    {
+        body();
+    }
+    else if (t_body == fakecompile::time::MISSING)
+    {
+
+    }
+    else if (t_body == fakecompile::time::QUICKLY)
+    {
+
+    }
+    else
+    {
+
+    }
     tail();
 }
 
