@@ -11,6 +11,7 @@ private:
     void tail() override;
     void default_color() override;
     std::vector<std::string> fake_extension_list() override;
+    bool rand_shift(int const &value);
 
 public:
     make() : tpl("make")
@@ -173,6 +174,15 @@ std::vector<std::string> make::fake_extension_list()
 {
     return {
         "cpp.obj"};
+}
+
+bool make::rand_shift(int const &value)
+{
+    std::uniform_int_distribution<> distr(0, value);
+    if (value != distr(mt))
+        return false;
+    else
+        return true;
 }
 
 #endif // MAKE_H

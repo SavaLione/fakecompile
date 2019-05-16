@@ -24,9 +24,10 @@ class tpl
 {
 private:
     std::string name;
-    std::mt19937 mt;
 
 protected:
+    std::mt19937 mt;
+
     virtual std::vector<std::string> path();
     virtual std::vector<std::string> source_file_name();
     virtual std::vector<std::string> fake_extension_list();
@@ -41,8 +42,6 @@ protected:
     int rand_time_sleep();
     int rand_quantity_source_files();
     int rand_range(int const &a, int const &b);
-
-    bool rand_shift(int const &value);
 
     virtual std::vector<std::string> fake_path();
     virtual std::string fake_source_file_name();
@@ -199,15 +198,6 @@ int tpl::rand_range(int const &a, int const &b)
 {
     std::uniform_int_distribution<> distr(a, b);
     return distr(mt);
-}
-
-bool tpl::rand_shift(int const &value)
-{
-    std::uniform_int_distribution<> distr(0, value);
-    if (value != distr(mt))
-        return false;
-    else
-        return true;
 }
 
 #endif // TPL_H
