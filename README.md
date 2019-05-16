@@ -15,21 +15,38 @@ Simple compiler emulation application
 
 ## How to use?
 
-1) Download or compile the required version of fake compile
+1) Download or compile the required version of fakecompile
+2) Select the desired compiler type
+    
+    You can view compilers through the program's help.
 
+    (-h or --help)
+3) Select the speed and time of the program
+
+```
+    -t                  --time  - Program runtime in seconds (not accurate)
+    --time_sleep_MIN            - Minimum row rendering time in milliseconds
+    --time_sleep_MAX            - Maximum row rendering time in milliseconds
+```
+    (You can run the program without these parameters. In this case, the program will run indefinitely.)
+
+4) Run the program
+
+Example:
+
+```
 For Linux:
-
-    $ ./fakecompile --make
-
-For Windows:
-
-    $ fakecompile.exe --make
-
-Program Assistance:
-
-    $ ./fakecompile -h
+    $ ./fakecompile -t --time_sleep_MAX 700 --make
     or
-    $ fakecompile.exe -h
+    $ ./fakecompile --cmake
+```
+
+```
+For Windows:
+    $ fakecompile.exe -t --time_sleep_MAX 700 --make
+    or
+    $ fakecompile.exe --cmake
+```
 
 ## How to build a project
 
@@ -61,3 +78,15 @@ For Windows:
 [An example of using fakecompile with time](examples/example_with_time.md)
 
 [Linux compile fakecompile](examples/compile_on_linux.md)
+
+## Todo
+
+### Compilers
+
+- [x] make
+- [x] CMake
+
+### Opportunities
+
+- [x] time support
+- [ ] error support
