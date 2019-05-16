@@ -314,7 +314,7 @@ void make::run(int body_sec)
     {
         body();
     }
-    else if (body_sec == fakecompile::time::MISSING)
+    else if (body_sec == fakecompile::time::SKIP)
     {
 
     }

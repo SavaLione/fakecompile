@@ -6,8 +6,8 @@ namespace fakecompile
 namespace VERSION
 {
     const int MAJOR = 0;
-    const int MINOR = 1;
-    const int PATCH = 9;
+    const int MINOR = 2;
+    const int PATCH = 0;
 
     const int VERSION = (MAJOR * 10000 + MINOR * 100 + PATCH);
 

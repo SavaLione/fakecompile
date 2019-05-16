@@ -15,9 +15,10 @@ namespace fakecompile
 {
 enum time
 {
-    MISSING = -1,
+    SKIP = -1,
     INFINITELY = -2,
-    QUICKLY = -3
+    QUICKLY = -3,
+    MISSING = -10
 };
 } // namespace fakecompile
 
