@@ -66,13 +66,13 @@ public:
 
     virtual void run();
 
-    void set_quantity_source_files_MAX(int const& MAX);
-    void set_fake_path_depth_MAX(int const& MAX);
-    void set_time_sleep_MAX(int const& MAX);
+    void set_quantity_source_files_MAX(int const &MAX);
+    void set_fake_path_depth_MAX(int const &MAX);
+    void set_time_sleep_MAX(int const &MAX);
 
-    void set_quantity_source_files_MIN(int const& MIN);
-    void set_fake_path_depth_MIN(int const& MIN);
-    void set_time_sleep_MIN(int const& MIN);
+    void set_quantity_source_files_MIN(int const &MIN);
+    void set_fake_path_depth_MIN(int const &MIN);
+    void set_time_sleep_MIN(int const &MIN);
 };
 
 tpl::tpl(std::string const &name)
@@ -86,32 +86,32 @@ tpl::~tpl()
 {
 }
 
-void tpl::set_quantity_source_files_MAX(int const& MAX)
+void tpl::set_quantity_source_files_MAX(int const &MAX)
 {
     this->quantity_source_files_MAX = MAX;
 }
 
-void tpl::set_fake_path_depth_MAX(int const& MAX)
+void tpl::set_fake_path_depth_MAX(int const &MAX)
 {
     this->fake_path_depth_MAX = MAX;
 }
 
-void tpl::set_time_sleep_MAX(int const& MAX)
+void tpl::set_time_sleep_MAX(int const &MAX)
 {
     this->time_sleep_MAX = MAX;
 }
 
-void tpl::set_quantity_source_files_MIN(int const& MIN)
+void tpl::set_quantity_source_files_MIN(int const &MIN)
 {
     this->quantity_source_files_MIN = MIN;
 }
 
-void tpl::set_fake_path_depth_MIN(int const& MIN)
+void tpl::set_fake_path_depth_MIN(int const &MIN)
 {
     this->fake_path_depth_MIN = MIN;
 }
 
-void tpl::set_time_sleep_MIN(int const& MIN)
+void tpl::set_time_sleep_MIN(int const &MIN)
 {
     this->time_sleep_MIN = MIN;
 }
@@ -167,7 +167,28 @@ std::vector<std::string> tpl::path()
         "oprofile",
         "arc",
         "boot",
-        "dts"};
+        "dts",
+        "rpm",
+        "rseq",
+        "rtc",
+        "rxrpc",
+        "sched",
+        "scsi",
+        "sctp",
+        "siox",
+        "skb",
+        "smbus",
+        "sock",
+        "spi",
+        "spmi",
+        "sunrpc",
+        "sunvnet",
+        "swiotlb",
+        "syscalls",
+        "target",
+        "task",
+        "tcp",
+        "tegra_apb_dma"};
 }
 
 std::vector<std::string> tpl::source_file_name()
@@ -182,6 +203,40 @@ std::vector<std::string> tpl::source_file_name()
         "sigcontext",
         "signal",
         "swab",
+        "unistd",
+        "auxvec",
+        "bitsperlong",
+        "byteorder",
+        "compiler",
+        "console",
+        "errno",
+        "fcntl",
+        "fpu",
+        "gentrap",
+        "ioctl",
+        "ioctls",
+        "Kbuild",
+        "mman",
+        "pal",
+        "param",
+        "posix_types",
+        "ptrace",
+        "reg",
+        "regdef",
+        "resource",
+        "setup",
+        "sigcontext",
+        "siginfo",
+        "signal",
+        "socket",
+        "sockios",
+        "stat",
+        "statfs",
+        "swab",
+        "sysinfo",
+        "termbits",
+        "termios",
+        "types",
         "unistd"};
 }
 
