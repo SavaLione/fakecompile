@@ -55,3 +55,9 @@ For Windows:
 	$ mkdir build && cd build
     $ cmake .. -G "MinGW Makefiles"
     $ mingw32-make
+
+## Examples
+
+[An example of using fakecompile with time](examples/example_with_time.md)
+
+[Linux compile fakecompile](examples/compile_on_linux.md)
