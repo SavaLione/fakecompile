@@ -56,6 +56,10 @@ public:
     ~tpl();
 
     virtual void run();
+
+    void set_quantity_source_files_MAX(int const& MAX);
+    void set_fake_path_depth_MAX(int const& MAX);
+    void set_time_sleep_MAX(int const& MAX);
 };
 
 tpl::tpl(std::string const &name)
@@ -67,6 +71,21 @@ tpl::tpl(std::string const &name)
 
 tpl::~tpl()
 {
+}
+
+void tpl::set_quantity_source_files_MAX(int const& MAX)
+{
+    this->quantity_source_files_MAX = MAX;
+}
+
+void tpl::set_fake_path_depth_MAX(int const& MAX)
+{
+    this->fake_path_depth_MAX = MAX;
+}
+
+void tpl::set_time_sleep_MAX(int const& MAX)
+{
+    this->time_sleep_MAX = MAX;
 }
 
 void tpl::head()
