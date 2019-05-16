@@ -49,6 +49,8 @@ protected:
     virtual std::vector<std::string> fake_path();
     virtual std::string fake_source_file_name();
     virtual std::string fake_extension();
+    virtual std::string fake_full_path();
+    virtual std::string fake_version();
 
     int quantity_source_files_MAX = 10;
     int fake_path_depth_MAX = 10;
@@ -237,6 +239,39 @@ std::string tpl::fake_source_file_name()
 std::string tpl::fake_extension()
 {
     return fake_extension_list()[rand_from_vec(fake_extension_list())];
+}
+
+std::string tpl::fake_full_path()
+{
+    std::string ret = "";
+    std::vector<std::string> p = fake_path();
+    if (p.size() > 1)
+    {
+        for (long long unsigned int i = 0; i < p.size() - 2; i++)
+        {
+            ret += p[i];
+            ret += "/";
+        }
+        ret += p[p.size() - 1];
+    }
+    else
+    {
+        ret += p[0];
+    }
+    return ret;
+}
+
+std::string tpl::fake_version()
+{
+    std::string ret = "";
+
+    ret += std::to_string(rand_range(0, 10));
+    ret += ".";
+    ret += std::to_string(rand_range(0, 20));
+    ret += ".";
+    ret += std::to_string(rand_range(0, 30));
+
+    return ret;
 }
 
 int tpl::rand_range(int const &a, int const &b)

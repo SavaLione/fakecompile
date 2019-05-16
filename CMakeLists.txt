@@ -96,7 +96,8 @@ project(${FC_NAME})
 set(FC_HEADERS
     src/fakecompile.h
     src/compilers/tpl.h
-    src/compilers/make.h)
+    src/compilers/make.h
+    src/compilers/cmake.h)
 
 set(FC_SOURCES
     src/fakecompile.cpp)
