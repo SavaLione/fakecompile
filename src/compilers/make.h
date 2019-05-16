@@ -33,7 +33,6 @@ void make::head()
     rlutil::setColor(rlutil::LIGHTMAGENTA);
     std::cout << "Scanning dependencies of target " << path()[rand_from_vec(path())] << std::endl;
     default_color();
-    std::cout << std::endl;
 }
 
 void make::body()
