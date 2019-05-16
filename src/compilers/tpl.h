@@ -51,6 +51,10 @@ protected:
     int fake_path_depth_MAX = 10;
     int time_sleep_MAX = 2 * 1000;
 
+    int quantity_source_files_MIN = 1;
+    int fake_path_depth_MIN = 1;
+    int time_sleep_MIN = 0;
+
 public:
     tpl(std::string const &name);
     ~tpl();
@@ -60,6 +64,10 @@ public:
     void set_quantity_source_files_MAX(int const& MAX);
     void set_fake_path_depth_MAX(int const& MAX);
     void set_time_sleep_MAX(int const& MAX);
+
+    void set_quantity_source_files_MIN(int const& MIN);
+    void set_fake_path_depth_MIN(int const& MIN);
+    void set_time_sleep_MIN(int const& MIN);
 };
 
 tpl::tpl(std::string const &name)
@@ -86,6 +94,21 @@ void tpl::set_fake_path_depth_MAX(int const& MAX)
 void tpl::set_time_sleep_MAX(int const& MAX)
 {
     this->time_sleep_MAX = MAX;
+}
+
+void tpl::set_quantity_source_files_MIN(int const& MIN)
+{
+    this->quantity_source_files_MIN = MIN;
+}
+
+void tpl::set_fake_path_depth_MIN(int const& MIN)
+{
+    this->fake_path_depth_MIN = MIN;
+}
+
+void tpl::set_time_sleep_MIN(int const& MIN)
+{
+    this->time_sleep_MIN = MIN;
 }
 
 void tpl::head()
@@ -171,7 +194,7 @@ int tpl::rand_from_vec(std::vector<std::string> const &vec)
 
 int tpl::rand_time_sleep()
 {
-    std::uniform_int_distribution<> distr(0, time_sleep_MAX);
+    std::uniform_int_distribution<> distr(time_sleep_MIN, time_sleep_MAX);
     return distr(mt);
 }
 
@@ -179,7 +202,7 @@ int tpl::rand_quantity_source_files()
 {
     if (quantity_source_files_MAX != 1)
     {
-        std::uniform_int_distribution<> distr(1, quantity_source_files_MAX);
+        std::uniform_int_distribution<> distr(quantity_source_files_MIN, quantity_source_files_MAX);
         return distr(mt);
     }
     else
@@ -192,7 +215,7 @@ std::vector<std::string> tpl::fake_path()
 {
     std::vector<std::string> ret;
 
-    std::uniform_int_distribution<> distr(1, fake_path_depth_MAX);
+    std::uniform_int_distribution<> distr(fake_path_depth_MIN, fake_path_depth_MAX);
     int depth = distr(mt);
 
     for (int i = 0; i < depth; i++)
