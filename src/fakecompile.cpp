@@ -14,6 +14,13 @@ int main(int argc, char *argv[])
     int i_time =fakecompile::time::MISSING,
         time_sleep_MIN = fakecompile::time::MISSING, 
         time_sleep_MAX = fakecompile::time::MISSING;
+    bool print_help = false;
+
+    if (argc == 1)
+    {
+        print_help = true;
+    }
+    
 	try
 	{
 		cxxopts::Options options("fakecompile");
@@ -30,7 +37,7 @@ int main(int argc, char *argv[])
 
 		auto result = options.parse(argc, argv);
 
-        if (argc <= 1)
+        if (print_help)
         {
             std::cout << options.help({"", "Group"});
 			exit(1);
