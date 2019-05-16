@@ -288,7 +288,12 @@ void make::tail()
     std::cout << "[100%] ";
     rlutil::setColor(rlutil::LIGHTGREEN);
 
-    std::cout << "Linking CXX executable " << path()[rand_from_vec(path())] << "\\" << source_file_name()[rand_from_vec(source_file_name())] << ".exe" << std::endl;
+    #if defined(FAKECOMPILE_WINDOWS)
+    std::cout << "Linking CXX executable " << path()[rand_from_vec(path())] << "\\" << source_file_name()[rand_from_vec(source_file_name())] << ".exe";
+    #else
+    std::cout << "Linking CXX executable " << path()[rand_from_vec(path())] << "/" << source_file_name()[rand_from_vec(source_file_name())];
+    #endif
+    std::cout << std::endl;
     default_color();
 
     std::cout << "[100%] Built target " << path()[rand_from_vec(path())] << std::endl;
@@ -330,8 +335,11 @@ void make::run(int body_sec)
 
 std::vector<std::string> make::fake_extension_list()
 {
-    return {
-        "cpp.obj"};
+    #if defined(FAKECOMPILE_UNIX)
+    return {"cpp.o"};
+    #else
+    return {"cpp.obj"};
+    #endif
 }
 
 bool make::rand_shift(int const &value)

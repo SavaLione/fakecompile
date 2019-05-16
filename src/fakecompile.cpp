@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
         time_sleep_MAX = fakecompile::time::MISSING;
 	try
 	{
-		cxxopts::Options options("fakecompile", " - fc");
+		cxxopts::Options options("fakecompile");
 
 		options.add_options()
 			("h,help", "Help")
@@ -35,7 +35,10 @@ int main(int argc, char *argv[])
         
         if (result.count("version"))
 		{
-            std::cout << "fakecompile version: " << fakecompile::VERSION::VERSION << std::endl;
+            std::cout << "fakecompile version: " 
+                << fakecompile::VERSION::MAJOR << "." 
+                << fakecompile::VERSION::MINOR << "."
+                << fakecompile::VERSION::PATCH << std::endl;
 			exit(0);
 		}
 
